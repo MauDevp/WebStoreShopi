@@ -4,6 +4,23 @@ import { PlusIcon } from '@heroicons/react/24/solid';
 
 const Card = (data) => {
     const context = useContext(ShoppingCartContext);
+
+    const showProduct = (productDetail) =>{
+        context.openProductDetail()
+        context.setproductToShow(productDetail)
+        context.CloseCheckoutSideMenu()
+        
+    }
+
+    const addProductsToCart = (event, productData) => {
+        event.stopPropagation()
+        context.setCount(context.count + 1)
+        context.setCartProducts([...context.cartProducts, productData])
+        context.openCheckoutSideMenu()
+        context.CloseProductDetail()
+        console.log('CART:', context.cartProducts)
+    }
+
     return(
         <div className='bg-white cursor-pointer w-56 h-60 rounded-lg'>
             <figure className='relative mb-2 w-full h-4/5'>
@@ -11,14 +28,14 @@ const Card = (data) => {
                     {data.data?.category?.name}
                 </span>
                 <img 
-                    onClick={() => context.openProductDetail()}
+                    onClick={() => showProduct(data.data)}
                     className='w-full h-full object-cover rounded-lg text-xs font-extralight'
                     src={data.data?.images[0]}
                     alt={'Product'}
                 />
                 <div 
                     className='absolute top-0 right-0 flex justify-center items-center rounded-full w-8 h-8 m-2 pb-0.5 font-medium bg-gray-200 text-black active:bg-black '
-                    onClick={() => context.setCount(context.count + 1)}
+                    onClick={(event) => {addProductsToCart(event, data.data)} }
                 >
                     <PlusIcon className='size-5 text-black  active:text-white'></PlusIcon>
                 </div>
