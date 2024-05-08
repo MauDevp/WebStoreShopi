@@ -7,7 +7,7 @@ function Home(){
     const [items, setItems] = useState(null);
 
     useEffect(() => {
-        fetch('https://api.escuelajs.co/api/v1/products')
+        fetch('https://test-api-store.onrender.com/product')
         .then(response => response.json())
         .then(data => setItems(data))
     }, []);
@@ -27,4 +27,4 @@ function Home(){
     );
 }
 
-export default Home
+export default Home;
