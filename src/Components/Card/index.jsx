@@ -20,7 +20,7 @@ const Card = (data) => {
         context.CloseProductDetail()
     }
 
-    const renderIcon = (id) => {
+    const renderIcon = (id) => { 
         const isInCart = context.cartProducts.filter(product => product.id === id).length > 0
 
         if (isInCart){

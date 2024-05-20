@@ -37,6 +37,7 @@ export const ShoppingCartProvide = ({children}) => {
             cartProducts,
             setCartProducts,
             isCheckoutSideMenuOpen,
+            setIsCheckoutSideMenuOpen,
             openCheckoutSideMenu,
             CloseCheckoutSideMenu,
         }}>
