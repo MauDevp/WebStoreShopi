@@ -15,6 +15,11 @@ const OrderCard = props => {
         handleDelete
     } = props
 
+    let renderXMarkIcon
+    if(handleDelete){
+        renderXMarkIcon = <XMarkIcon onClick={() => handleDelete(id)} className='size-6 text-black active:text-gray-400'></XMarkIcon>
+    }
+
     return(
         <div className='flex justify-between items-center mb-3'>
             <div className='flex items-center gap-3'>
@@ -25,7 +30,7 @@ const OrderCard = props => {
             </div>
             <div className='flex items-center gap-2'>
                 <p className='text-lg font-medium'>${price}</p>
-                <XMarkIcon onClick={() => handleDelete(id)} className='size-6 text-black active:text-gray-400'></XMarkIcon>
+                {renderXMarkIcon}
             </div>
         </div>
     )

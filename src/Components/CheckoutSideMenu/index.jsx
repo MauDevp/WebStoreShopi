@@ -1,5 +1,7 @@
-import { XMarkIcon } from '@heroicons/react/24/solid'
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
+import { XMarkIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context';
 import OrderCard from '../OrderCard';
 import { totalPrice } from '../../Utils';
@@ -10,6 +12,17 @@ const CheckoutSideMenu = () => {
     const handleDelete = (id) => {
         const filteredProducts = context.cartProducts.filter(product => product.id != id)
         context.setCartProducts(filteredProducts)
+    }
+    const handleCheckout = () => {
+        const orderToAdd = {
+            data: '01.02.23',
+            products: context.cartProducts,
+            totalProducts: context.cartProducts.length,
+            totalPrice: totalPrice(context.cartProducts)
+        }
+        context.setOrder([...context.order, orderToAdd])
+        context.setCartProducts([])
+        context.setSearchByTitle(null)
     }
 
     return(
@@ -35,12 +48,18 @@ const CheckoutSideMenu = () => {
                     />
                 ))}
             </div>
-            <div className='flex items-center border-t border-black px-6 w-full h-16 rounded-lg absolute bottom-0 right-0 left-0'>
+            {context.cartProducts.length > 0 ? (
+            <div className='flex flex-col py-2 bg-white justify-between items-center border-t border-black px-6 w-full h-28 rounded-lg absolute bottom-0 right-0 left-0'>
                 <p className='flex justify-between items-center w-full'>
                     <span className='font-light'>Total:</span>
                     <span className='font-medium text-2xl'>${totalPrice(context.cartProducts)}</span>
                 </p>
+                <Link className='w-full' to='/my-orders/last'>
+                    <button className='bg-black py-4 text-white w-full rounded-lg' onClick={() => handleCheckout()}>checkout</button>
+                </Link>
             </div>
+            ) : context.CloseCheckoutSideMenu() }
+
         </aside>
     );
 }
