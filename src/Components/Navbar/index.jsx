@@ -74,8 +74,8 @@ const Navbar = () => {
                 <li>
                     <NavLink 
                         to='/others'
-                        onClick={() => context.setSearchByCategory()}
-                        className={({ isActive }) =>
+                        onClick={() => context.setSearchByCategory('others')}
+                        className={({ isActive }) => 
                             isActive ? activeStyle : undefined
                         }>
                         Others
