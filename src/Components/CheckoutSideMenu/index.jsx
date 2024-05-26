@@ -29,7 +29,7 @@ const CheckoutSideMenu = () => {
         <aside 
             className={` ${context.isCheckoutSideMenuOpen ? 'flex flex-col' : 'hidden' } fixed right-0 top-[70px] border bg-white border-black rounded-lg w-[360px] h-[calc(100vh-70px)] flex flex-col pb-16`}>
             <div className='flex justify-between items-center p-6'>
-                <h2 className='font-medium text-xl'>My Order</h2>
+                <h2 className='font-medium text-3xl'>My Order</h2>
                 <div
                     className='cursor-pointer'x 
                     onClick={() => context.CloseCheckoutSideMenu()}>
@@ -37,15 +37,19 @@ const CheckoutSideMenu = () => {
                 </div>
             </div>
             <div className='px-6 overflow-y-auto flex-grow'>
-                {context.cartProducts.map(product => (
+                {context.cartProducts.map((product, index) => (
+                    <div key={product.id}>
                     <OrderCard
-                        key={product.id}
                         id={product.id}
                         title={product.title}
                         imageUrl={product.images}
                         price={product.price}
                         handleDelete={handleDelete}
                     />
+                    {index < context.cartProducts.length - 1 && (
+                        <hr className="border-t border-gray-200 my-3" />
+                    )}
+                </div>
                 ))}
             </div>
             {context.cartProducts.length > 0 ? (
