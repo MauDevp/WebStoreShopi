@@ -8,11 +8,13 @@ const OrdersCard = props => {
 
     // eslint-disable-next-line react/prop-types
     const { totalPrice, totalProducts } = props
+
+    // Set current date
     const currentData = () => {
         const date = new Date();
         const options = { day: '2-digit', month: '2-digit', year: '2-digit' };
         const formattedDate = date.toLocaleDateString('de-DE', options);
-        return formattedDate.replace(/\//g, '.');
+        return formattedDate.replace(/\//g, '/');
     }
 
     return(

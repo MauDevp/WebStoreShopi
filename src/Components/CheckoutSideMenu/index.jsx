@@ -5,14 +5,25 @@ import { XMarkIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context';
 import OrderCard from '../OrderCard';
 import { totalPrice } from '../../Utils';
+import { AddAmountItems } from '../AddAmountItems';
+
 
 const CheckoutSideMenu = () => {
     const context = useContext(ShoppingCartContext);
-    
+
     const handleDelete = (id) => {
         const filteredProducts = context.cartProducts.filter(product => product.id != id)
         context.setCartProducts(filteredProducts)
     }
+    
+    const countProductInstances = (id) => {
+        return context.cartProducts.reduce((count, product) => {
+            if (product.id === id) count += 1;
+            return count;
+        }, 0);
+    };
+    
+
     const handleCheckout = () => {
         const orderToAdd = {
             data: '01.02.23',
@@ -37,19 +48,27 @@ const CheckoutSideMenu = () => {
                 </div>
             </div>
             <div className='px-6 overflow-y-auto flex-grow'>
-                {context.cartProducts.map((product, index) => (
-                    <div key={product.id}>
-                    <OrderCard
-                        id={product.id}
-                        title={product.title}
-                        imageUrl={product.images}
-                        price={product.price}
-                        handleDelete={handleDelete}
-                    />
-                    {index < context.cartProducts.length - 1 && (
-                        <hr className="border-t border-gray-200 my-3" />
-                    )}
-                </div>
+                {context.cartProducts.reduce((uniqueProducts, product) => {
+                    if (!uniqueProducts.some(uniqueProduct => uniqueProduct.id === product.id)) {
+                        uniqueProducts.push(product);
+                    }
+                    return uniqueProducts;
+                }, []).map((product, index) => (
+                    <div key={`${product.id}-${index}`}>
+                        <OrderCard
+                            id={product.id}
+                            title={product.title}
+                            imageUrl={product.images}
+                            price={product.price}
+                            handleDelete={handleDelete}
+                            AddAmountItems={AddAmountItems}
+                            productItem={product}
+                            countProductInstances={countProductInstances}
+                        />
+                        {index < context.cartProducts.length - 1 && (
+                            <hr className="border-t border-gray-200 my-3" />
+                        )}
+                    </div>
                 ))}
             </div>
             {context.cartProducts.length > 0 ? (

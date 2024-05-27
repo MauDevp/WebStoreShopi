@@ -8,9 +8,19 @@ import OrderCard from '../../Components/OrderCard';
 
 function MyOrder() {
     const context = useContext(ShoppingCartContext);
+    
     const currentPath = window.location.pathname;
     let index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
     if(index === 'last') index = context.order?.length -1
+    
+    console.log('P: ', context.order?.[index].products);
+
+    const countProductInstances = (id) => {
+        return context.order?.[index].products.reduce((count, product) => {
+            if (product.id === id) count += 1;
+            return count;
+        }, 0);
+    };
 
     return (
         <Layout>
@@ -21,13 +31,22 @@ function MyOrder() {
                 <h1>My Order</h1>
             </div>
             <div className='flex flex-col w-80'>
-                {context.order?.[index]?.products.map(product => (
+                {Object.values(
+                    context.order?.[index]?.products.reduce((acc, product) => {
+                        if (!acc[product.id]) {
+                            acc[product.id] = product;
+                        }
+                        return acc;
+                    }, {})
+                ).map((product, productIndex) => (
                     <OrderCard
-                        key={product.id}
+                        key={`${product.id}-${productIndex}`}
                         id={product.id}
                         title={product.title}
                         imageUrl={product.images}
                         price={product.price}
+                        productsItems={product}
+                        countProductInstances={countProductInstances}
                     />
                 ))}
             </div>

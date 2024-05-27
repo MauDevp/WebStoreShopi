@@ -47,8 +47,8 @@ export const ShoppingCartProvide = ({children}) => {
     }, []);
 
     useEffect(() => {
-        setCount(cartProducts.length)
-    }, [cartProducts, count])
+        setCount(cartProducts.length);
+    }, [cartProducts]);
 
     const filteredItemsByTitle = (items, searchByTitle) => {
         return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
@@ -103,7 +103,7 @@ export const ShoppingCartProvide = ({children}) => {
             setSearchByTitle,
             filteredItems,
             searchByCategory,
-            setSearchByCategory
+            setSearchByCategory,
         }}>
             {children}
         </ShoppingCartContext.Provider>
