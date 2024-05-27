@@ -72,13 +72,13 @@ const CheckoutSideMenu = () => {
                 ))}
             </div>
             {context.cartProducts.length > 0 ? (
-            <div className='flex flex-col py-2 bg-white justify-between items-center border-t border-black px-6 w-full h-28 rounded-lg absolute bottom-0 right-0 left-0'>
-                <p className='flex justify-between items-center w-full'>
-                    <span className='font-light'>Total:</span>
+            <div className='flex flex-col py-2 bg-white justify-between items-center border-t border-black px-6 w-full h-14 rounded-lg'>
+                <p className='flex justify-between items-center w-full mb-1'>
+                    <span className='font-normal'>Total:</span>
                     <span className='font-medium text-2xl'>${totalPrice(context.cartProducts)}</span>
                 </p>
                 <Link className='w-full' to='/my-orders/last'>
-                    <button className='bg-black py-4 text-white w-full rounded-lg' onClick={() => handleCheckout()}>checkout</button>
+                    <button className='bg-black py-4 text-white w-full rounded-md' onClick={() => handleCheckout()}>checkout</button>
                 </Link>
             </div>
             ) : context.CloseCheckoutSideMenu() }

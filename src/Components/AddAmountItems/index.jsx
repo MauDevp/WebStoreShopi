@@ -30,11 +30,11 @@ export const AddAmountItems = ({idItem, product, amountItems}) => {
     };
 
     return(
-        <div className='flex justify-center h-full items-center gap-1 bg-gray-100 rounded-sm'>
+        <div className='flex justify-center h-full items-center gap-1 rounded-sm'>
             <button onClick={handleRemoveFromCart} className='flex-1'>
                 <MinusIcon className='size-5 text-black active:text-gray-400' />
             </button>
-            <span className='flex-2 text-center w-10 bg-blue-100 rounded-sm'>{amountItems}</span>
+            <span className='flex-2 text-center w-10 bg-slate-100 rounded-sm'>{amountItems}</span>
             <button onClick={handleAddToCart} className='flex-1'>
                 <PlusIcon className='size-5 text-black active:text-gray-400' />
             </button>

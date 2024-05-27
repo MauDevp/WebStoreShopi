@@ -8,6 +8,7 @@ function MyOrders() {
     const context = useContext(ShoppingCartContext);
     context.cartProducts.length
     context.setCount(context.cartProducts.length)
+    context.CloseCheckoutSideMenu() 
 
     return (
         <Layout>
