@@ -29,12 +29,12 @@ const OrderCard = ({ id, title, imageUrl, price, handleDelete, AddAmountItems, p
             <div className='flex flex-col h-20 justify-center items-center'>
                 <div className='flex items-center w-full h-full gap-1'>
                     <div className='flex-1 h-full'></div>
-                    <p className='flex-1 text-lg font-medium mr-1 pt-4'>${price*productCount}</p>
+                    <p className='flex-1 text-lg font-medium pt-4'>${price*productCount}</p>
                     <div className='flex-1 mb-6'>
                         {renderXMarkIcon}
                     </div>
                 </div>
-                {AddAmountItems ? <AddAmountItems idItem={id} product={productItem} amountItems={productCount} /> : <span className='flex-2 text-center w-10'>x {productCount}</span>}
+                {AddAmountItems ? <AddAmountItems idItem={id} product={productItem} amountItems={productCount} /> : <span className='flex-2 font-light text-sm text-center w-16'>${price} x {productCount}</span>}
             </div>
         </div>
     );

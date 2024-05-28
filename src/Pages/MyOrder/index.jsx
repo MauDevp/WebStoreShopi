@@ -12,6 +12,7 @@ function MyOrder() {
     const currentPath = window.location.pathname;
     let index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
     if(index === 'last') index = context.order?.length -1
+    // console.log('Index: ', index);
     
     // console.log('P: ', context.order?.[index].products);
 
@@ -24,7 +25,7 @@ function MyOrder() {
 
     return (
         <Layout>
-            <div className='flex justify-center items-center relative w-80 mb-4'>
+            <div className='flex justify-center items-center relative w-80 mb-6 mt-4'>
                 <Link to='/my-orders' className='absolute left-0'>
                     <ChevronLeftIcon className='h-6 w-6 text-black cursor-pointer' />
                 </Link>
@@ -39,15 +40,21 @@ function MyOrder() {
                         return acc;
                     }, {})
                 ).map((product, productIndex) => (
-                    <OrderCard
-                        key={`${product.id}-${productIndex}`}
-                        id={product.id}
-                        title={product.title}
-                        imageUrl={product.images}
-                        price={product.price}
-                        productsItems={product}
-                        countProductInstances={countProductInstances}
-                    />
+                    <div key={`${product.id}-${productIndex}`}>
+                        <OrderCard
+                            key={`${product.id}-${productIndex}`}
+                            id={product.id}
+                            title={product.title}
+                            imageUrl={product.images}
+                            price={product.price}
+                            productsItems={product}
+                            countProductInstances={countProductInstances}
+                        />
+                        {index < (context.order?.[index].products.length) - 1 && (
+                            <hr className="border-t border-gray-200 my-3" />
+                        )}
+                    </div>
+                    
                 ))}
             </div>
         </Layout>
