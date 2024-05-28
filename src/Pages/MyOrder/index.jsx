@@ -13,7 +13,7 @@ function MyOrder() {
     let index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
     if(index === 'last') index = context.order?.length -1
     
-    console.log('P: ', context.order?.[index].products);
+    // console.log('P: ', context.order?.[index].products);
 
     const countProductInstances = (id) => {
         return context.order?.[index].products.reduce((count, product) => {

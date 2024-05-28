@@ -14,8 +14,8 @@ const Navbar = () => {
 
     return(
         <nav className='flex justify-between items-center fixed z-10 w-full py-5 px-8 text-base font-light top-0 bg-slate-200'>
-            <ul className='flex items-center gap-4'>
-                <li className='font-semibold text-lg'>
+            <ul className='flex font-medium text-base text-gray-500 items-center gap-4'>
+                <li className='font-bold text-2xl text-black'>
                     <NavLink 
                         to='/'>
                         Shopi
@@ -83,8 +83,8 @@ const Navbar = () => {
                 </li>
             </ul>
 
-            <ul className='flex items-center gap-4'>
-                <li className='text-black/60'>
+            <ul className='flex font-medium text-base text-gray-500 items-center gap-4'>
+                <li className='text-black/60 font-normal'>
                     mau@platzi.com
                 </li>
                 <li>

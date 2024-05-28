@@ -1,14 +1,14 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
+// import { ShoppingCartContext } from '../../Context';
 import { XMarkIcon} from '@heroicons/react/24/outline';
-import { ShoppingCartContext } from '../../Context';
 
 // eslint-disable-next-line react/prop-types
 const OrderCard = ({ id, title, imageUrl, price, handleDelete, AddAmountItems, productItem, countProductInstances}) => {
-    const context = useContext(ShoppingCartContext);
     
     
-    console.log('CP',context.cartProducts)
-    console.log('O: ', context.order)
+    // const context = useContext(ShoppingCartContext);
+    // console.log('cartProducts',context.cartProducts)
+    // console.log('Order: ', context.order)
     
     const productCount = countProductInstances(id);
 
