@@ -30,11 +30,13 @@ function Home(){
 
     return (
         <Layout>
-            <div className='flex justify-center items-center relative w-80'>
-                <h1 className='font-medium text-3xl mb-10'>Exclusive products</h1>
+            <div className='flex justify-center items-center relative w-80 sm:w-full'>
+                <h1 className='font-medium text-3xl mb-10 mt-2 md:text-4xl md:mt-0'>Exclusive products</h1>
             </div>
-            <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
-                {renderView()}
+            <div className="flex justify-center">
+                <div className="grid gap-4 grid-cols-1 md:grid-cols-4 w-full max-w-screen-lg">
+                    {renderView()}
+                </div>
             </div>
             <ProductDetail />
         </Layout>
