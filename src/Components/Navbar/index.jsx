@@ -128,8 +128,8 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            <div className='hidden md:block'>
-                <div className='flex justify-center items-center md:w-11/12'>
+            <div className='hidden md:block md:w-10/12'>
+                <div className='flex justify-center items-center md:w-full'>
                     <ul>
                         <li className='font-bold text-4xl text-black'>
                             <NavLink 
@@ -140,7 +140,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                     </ul>
-                    <div className='flex justify-center items-center w-4/12 h-10 ml-40 mr-6'>
+                    <div className='flex justify-center items-center w-4/12 h-10 ml-40 mr-8'>
                         <button onClick={handleButtonClick} className='flex justify-center items-center bg-black h-full w-12 rounded-s-lg border border-black'>
                             <MagnifyingGlassIcon className='h-6 w-6 text-white cursor-pointer'/>
                         </button>
@@ -152,7 +152,7 @@ const Navbar = () => {
                             onChange={(event) => context.setSearchByTitle(event.target.value) }
                         />
                     </div>
-                    <ul className='flex font-medium text-base text-gray-500 items-center gap-4'>
+                    <ul className='flex font-medium text-base text-gray-500 items-center gap-8'>
                         <li className='text-black/60 font-normal'>
                             mau@platzi.com
                         </li>
@@ -189,7 +189,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <div className='flex justify-start  md:w-6/12'>
+                <div className='flex justify-start md:w-6/12 md:ml-40'>
                     <ul className='flex font-medium text-base text-gray-500 items-center gap-5 mt-6'>
                         <li>
                             <NavLink 
